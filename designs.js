@@ -1,1 +1,39 @@
-// Select color input// Select size input​// When size is submitted by the user, call makeGrid()$(document).ready(function(){$('#sizePicker').submit(function makeGrid(event) {	event.preventDefault();	$('table tr, td').remove();​var rows=$('#input_height').val();var columns=$('#input_width').val();​for (var i=1;i<=rows;i++) {    $('table').append("<tr></tr>");​    for (var j=1;j<=columns;j++) {      $( 'tr:last').append("<td></td>");​$('td').attr('class','paint');		}	}​	$('#pixel_canvas').on('click',function('paint'){​​	var highlight=$('#colorPicker').val();​		$('#colorPicker').target.css('background-color', highlight);	});});});
+// Select color input
+// Select size input
+​
+// When size is submitted by the user, call makeGrid()
+$(document).ready(function() {
+            $('#sizePicker').submit(function (event) {
+                event.preventDefault();
+
+            var rows=$('#inputHeight').val();
+            var columns=$('#inputWeight').val();
+            makeGrid(rows, columns);
+            });
+
+
+            function makeGrid(a,b) {
+             $('tr').remove();
+
+             for (var x = 1; x <= a; x++){
+                 $('table').append("<tr></tr>");
+                for(var y = 1; y <= b; y++){
+                   $( 'tr:last').append("<td></td>");
+                }
+              }
+
+          $('td').click(function addColor() {
+                var color = $('#colorPicker').val();
+
+              if ($(this).attr('style')){
+                $(this).removeAttr('style');
+             } else {
+                       $(this).attr('style', 'background-color:' + color);
+              }
+            })
+
+          
+           }
+
+
+});
